@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Issued Books</h2>
+<table class="w-full border-collapse border border-gray-300">
+    <thead>
+        <tr class="bg-gray-200">
+            <th class="border border-gray-300 px-4 py-2">Book Title</th>
+            <th class="border border-gray-300 px-4 py-2">Student</th>
+            <th class="border border-gray-300 px-4 py-2">Issue Date</th>
+            <th class="border border-gray-300 px-4 py-2">Expiry Date</th>
+            <th class="border border-gray-300 px-4 py-2">Return Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ib in issued_books %}
+        <tr>
+            <td class="border border-gray-300 px-4 py-2">{{ ib[1] }}</td>
+            <td class="border border-gray-300 px-4 py-2">{{ ib[2] }}</td>
+            <td class="border border-gray-300 px-4 py-2">{{ ib[3] }}</td>
+            <td class="border border-gray-300 px-4 py-2">{{ ib[4] }}</td>
+            <td class="border border-gray-300 px-4 py-2">{{ ib[5] if ib[5] else 'Not Returned' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('admin_dashboard') }}" class="block bg-gray-500 text-white px-4 py-2 rounded mt-4 text-center">Back to Dashboard</a>
+{% endblock %}
